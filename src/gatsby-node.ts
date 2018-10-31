@@ -1,8 +1,8 @@
-import fetch from 'node-fetch';
-import { createHash } from 'crypto';
+import fetch from 'node-fetch'
+import { createHash } from 'crypto'
 
 interface Options {
-  slug: string;
+  slug: string
 }
 
 exports.sourceNodes = async (
@@ -11,13 +11,13 @@ exports.sourceNodes = async (
 ) => {
   const url = `https://kerckhoff.dailybruin.com/api/packages/flatpages/${
     options.slug
-  }`;
-  const response = await fetch(url);
-  const json = await response.json();
-  const data = json['data'];
+  }`
+  const response = await fetch(url)
+  const json = await response.json()
+  const data = json['data']
 
   Object.keys(data).forEach(key => {
-    const value = data[key];
+    const value = data[key]
     createNode({
       ...value,
       id: createNodeId(`kerckhoff-${key}`),
@@ -30,6 +30,6 @@ exports.sourceNodes = async (
           .update(JSON.stringify(value))
           .digest('hex'),
       },
-    });
-  });
-};
+    })
+  })
+}
