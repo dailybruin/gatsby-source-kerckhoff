@@ -21,7 +21,8 @@
   "scripts": {
     "start": "tsc -w",
     "build": "tsc",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "commit": "git-cz"
   },
   "publishConfig": {
     "access": "public"
