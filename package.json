@@ -2,7 +2,7 @@
   "name": "@dailybruin/gatsby-source-kerckhoff",
   "author": "Daily Bruin Online <online@dailybruin.com>",
   "description": "The Daily Bruin's component library.",
-  "version": "1.0.5",
+  "version": "0.0.0-development",
   "main": "gatsby-node.js",
   "license": "AGPL-3.0",
   "keywords": [
@@ -22,7 +22,9 @@
     "start": "tsc -w",
     "build": "tsc",
     "prepublish": "yarn build",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "publishConfig": {
     "access": "public"
