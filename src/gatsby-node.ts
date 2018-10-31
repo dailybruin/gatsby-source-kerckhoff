@@ -16,25 +16,24 @@ exports.sourceNodes = async (
   const json = await response.json()
   const { data } = json
 
-  const allValues: any = {}
-
   Object.keys(data).forEach(key => {
-    if (allValues.hasOwnProperty(key)) {
-      allValues[key] = null
-    }
-  })
+    const article = data[key]
+    const content = article.content.map((element: any) => {
+      if (element.value !== 'string') {
+        element.value = JSON.stringify(element.value)
+      }
+      return element
+    })
 
-  Object.keys(data).forEach(key => {
-    const value = data[key]
     createNode({
-      ...allValues,
-      ...value,
+      ...article,
       children: [],
+      content,
       id: createNodeId(`kerckhoff-${key}`),
       internal: {
-        content: JSON.stringify(value),
+        content: JSON.stringify(article),
         contentDigest: createHash('md5')
-          .update(JSON.stringify(value))
+          .update(JSON.stringify(article))
           .digest('hex'),
         type: 'KerckhoffArticle',
       },

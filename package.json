@@ -2,7 +2,7 @@
   "name": "@dailybruin/gatsby-source-kerckhoff",
   "author": "Daily Bruin Online <online@dailybruin.com>",
   "description": "The Daily Bruin's component library.",
-  "version": "0.0.0-semantically-released",
+  "version": "1.0.5",
   "main": "gatsby-node.js",
   "license": "AGPL-3.0",
   "keywords": [
