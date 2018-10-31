@@ -1,5 +1,5 @@
-import fetch from 'node-fetch'
 import { createHash } from 'crypto'
+import fetch from 'node-fetch'
 
 interface Options {
   slug: string
@@ -14,22 +14,31 @@ exports.sourceNodes = async (
   }`
   const response = await fetch(url)
   const json = await response.json()
-  const data = json['data']
+  const { data } = json
+
+  const allValues: any = {}
+
+  Object.keys(data).forEach(key => {
+    if (allValues.hasOwnProperty(key)) {
+      allValues[key] = null
+    }
+  })
 
   Object.keys(data).forEach(key => {
     const value = data[key]
     createNode({
+      ...allValues,
       ...value,
-      id: createNodeId(`kerckhoff-${key}`),
-      parent: null,
       children: [],
+      id: createNodeId(`kerckhoff-${key}`),
       internal: {
-        type: 'KerckhoffArticle',
         content: JSON.stringify(value),
         contentDigest: createHash('md5')
           .update(JSON.stringify(value))
           .digest('hex'),
+        type: 'KerckhoffArticle',
       },
+      parent: null,
     })
   })
 }
