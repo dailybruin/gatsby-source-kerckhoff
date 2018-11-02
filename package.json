@@ -11,6 +11,9 @@
     "daily bruin",
     "journalism"
   ],
+  "files": [
+    "gatsby-node.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dailybruin/lux.git"
