@@ -24,7 +24,7 @@ Then add it to your `gatsby-config.js`:
 
 ```js
 {
-  resolve: 'gatsby-source-kerckhoff',
+  resolve: '@dailybruin/gatsby-source-kerckhoff',
   options: {
     slug: 'online.demoaml',
   },
