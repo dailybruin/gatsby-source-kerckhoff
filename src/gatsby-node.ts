@@ -27,6 +27,7 @@ exports.sourceNodes = async (
     })
 
     createNode({
+      title: key,
       ...article,
       children: [],
       content,
