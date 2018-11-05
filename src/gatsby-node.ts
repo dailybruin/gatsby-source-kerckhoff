@@ -19,12 +19,15 @@ exports.sourceNodes = async (
   // Each article name is given as a key on in the JSON data, e.g., `"article.aml": {...}`
   Object.keys(data).forEach(key => {
     const article = data[key]
-    const content = article.content.map((element: any) => {
-      if (typeof element.value !== 'string') {
-        element.value = JSON.stringify(element.value)
-      }
-      return element
-    })
+    let content
+    if (article.hasOwnProperty('content') && Array.isArray(article.content)) {
+      content = article.content.map((element: any) => {
+        if (typeof element.value !== 'string') {
+          element.value = JSON.stringify(element.value)
+        }
+        return element
+      })
+    }
 
     createNode({
       title: key,
