@@ -61,7 +61,7 @@
     ]
   },
   "dependencies": {
-    "@types/node": "^10.12.1",
+    "@types/node": "^14.0.0",
     "@types/node-fetch": "^2.1.2",
     "node-fetch": "^2.2.0",
     "typescript": "^3.1.4"
